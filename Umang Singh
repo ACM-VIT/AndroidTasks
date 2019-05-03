@@ -1,0 +1,106 @@
+import 'package:flutter/material.dart';
+
+void main()
+{
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Login Page',
+      home: HomePage(),
+      theme: ThemeData(
+        primarySwatch: Colors.blueGrey,
+        brightness: Brightness.dark,
+      ),
+    );
+  }
+}
+
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+
+  void execute(){
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context)=>SecondRoute())
+    );
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+     body: Column(
+       mainAxisAlignment: MainAxisAlignment.center,
+       children: <Widget>[
+       
+         Container(
+           padding: const EdgeInsets.all(20.0),
+           child: TextField(
+             decoration: InputDecoration(
+               border:  OutlineInputBorder(
+                   borderRadius: const BorderRadius.all(const Radius.circular(20.0)
+                   ),
+                   gapPadding: 20.0
+               ),
+               filled: true,
+               hintStyle: TextStyle(color: Colors.blue),
+               hintText: "Email Address",
+               fillColor: Colors.black12,
+             ),
+           )
+         ),
+        Container(
+          padding: EdgeInsets.all(20.0),
+          child: TextField(
+            obscureText: true,
+            decoration: InputDecoration(
+              border:  OutlineInputBorder(
+                  borderRadius: const BorderRadius.all(const Radius.circular(20.0)
+                  ),
+                  gapPadding: 20.0
+              ),
+              filled: true,
+              hintStyle: TextStyle(color: Colors.blue),
+              hintText: "Password",
+              fillColor: Colors.black12,
+            ),
+          ),
+        ),
+        Container(
+          padding: const EdgeInsets.all(20.0),
+         child: RaisedButton(
+             onPressed: execute,
+            textColor: Colors.white,
+           child: Text('LOGIN'),
+         )
+        ),
+
+       ],
+     ),
+    );
+  }
+}
+class SecondRoute extends StatefulWidget {
+  @override
+  _SecondRouteState createState() => _SecondRouteState();
+}
+
+class _SecondRouteState extends State<SecondRoute> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(title: Text('NOTE KEEPER'),),
+      ),
+    );
+  }
+}
